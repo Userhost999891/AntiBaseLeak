@@ -18,6 +18,10 @@ sourceSets["main"].java.srcDir(rootProject.file("src/$mcVersion/java"))
 
 repositories {
     mavenCentral()
+    exclusiveContent {
+        forRepository { maven("https://api.modrinth.com/maven") { name = "Modrinth" } }
+        filter { includeGroup("maven.modrinth") }
+    }
 }
 
 dependencies {
@@ -26,6 +30,13 @@ dependencies {
 
     modImplementation("net.fabricmc:fabric-loader:${sc.properties.get<String>("deps.fabric_loader")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${sc.properties.get<String>("deps.fabric_api")}")
+
+    // Development only: gives the dev client a mod list screen, which is the only
+    // place the mod icon and metadata can actually be looked at in game. Never
+    // ends up in the published jar.
+    sc.properties.rawOrNull("deps", "mod_menu")?.let {
+        modLocalRuntime("maven.modrinth:modmenu:$it")
+    }
 }
 
 loom {
