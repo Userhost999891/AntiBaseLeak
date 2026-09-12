@@ -1,94 +1,40 @@
-## Your screenshots know where your base is
+Your screenshots can give your base away. The bedrock pattern, block rotations and plant offsets are all calculated from coordinates — with the world seed, anyone can match them back and find you. And F3 simply prints the coordinates outright.
 
-Three things you see in Minecraft are a deterministic function of coordinates. Anyone with the world seed can match them against a generated world and work out where the picture was taken:
+This mod closes all four. **Client-side only** — nothing is sent to the server, nothing is installed on it.
 
-- **the bedrock pattern** — the Nether ceiling and the bottom of the world are a fingerprint of the exact spot,
-- **block rotations and variants** — stone, netherrack and dirt pick their texture variant from a seed derived from XYZ,
-- **plant offsets** — grass and flowers are nudged sideways by the same function.
+## 🪨 Anti bedrock leak
 
-And then there is **F3**, which simply prints the coordinates for anyone watching.
+Bedrock is replaced with an ordinary block picked from the terrain around it, so the pattern never reaches your screen. Lighting, collisions and the look of the terrain stay the same. Works with Sodium.
 
-AntiBaseLeak closes all four. It is client-side only: it changes what *you* see, never what the server receives.
+## 🔄 Removed block rotation
 
----
+Stone, netherrack, dirt and plants stop choosing their texture variant and offset from XYZ — a netherrack wall is no longer a map reference.
 
-## What it does
+## 🔍 Blur your coordinates
 
-### Bedrock masking
+F3 lines can be masked with `###`, hidden completely, or **blurred by a real shader**. The blur goes into the frame before it is shown, so screenshots and OBS capture it too. Every category has its own switch: position, targeted block, biome, dimension, server address and more.
 
-Bedrock is replaced with an ordinary block, so the pattern never reaches the screen. The replacement is chosen **only from the terrain around it** — never from the shape of the bedrock itself — and only a full, opaque cube without a block entity qualifies, so lighting, the silhouette of the terrain and collisions stay exactly as they were.
+## ⚙️ Custom menu GUI
 
-| Mode | What it does |
-|---|---|
-| `AUTO` | picks the right one for your setup (default) |
-| `RENDER` | swaps the data on its way to the chunk builder; the world itself is untouched |
-| `WORLD` | swaps blocks in the client-side copy of the world; works with **any** renderer, including Sodium |
+Press **F7**. Every option has its own toggle and saves instantly. At the bottom, a hook status list shows whether each part of the mod has actually run — so you can check it instead of trusting it.
 
-`WORLD` mode is reversible — turning the option off puts the bedrock back without relogging.
+## 💬 Chat censoring
 
-And what it becomes:
-
-| Mode | Result |
-|---|---|
-| `NEAREST` | texture of the closest ordinary block — looks natural (default) |
-| `SECTION` | one block for the whole 16×16×16 section — no structure left at all |
-| `FIXED` | always the same block you choose — maximum uniformity |
-
-### No position-based model randomness
-
-Block rotations and plant offsets stop depending on coordinates, so the rotation pattern of a netherrack wall stops being a map reference. This covers third-party renderers too.
-
-### F3 censoring
-
-Every line is filtered right before it is drawn — including lines added by other mods — with a separate switch for player position, targeted block, fluid and entity, biome, dimension, server address, local difficulty and a catch-all for anything else that looks like coordinates.
-
-| Style | What you get |
-|---|---|
-| `MASK` | `XYZ: ### / ### / ###` — the label stays, the value does not |
-| `HIDE` | the line disappears entirely |
-| `BLUR` | the value is **blurred on screen by a shader** |
-
-`BLUR` runs the game's own blur post effect over the finished frame, before it is presented — so a screenshot, OBS or any other capture picks up the blur exactly as you see it. It is not an overlay drawn for your eyes only. If the blur ever fails, the mod falls back to masking with text instead of leaving the coordinates exposed.
-
-### Chat censoring (optional, off by default)
-
-Masks numbers in messages that look like coordinates — death messages, `/home` listings, coordinates shared by friends.
+Masks coordinates in chat: death messages, `/home` lists, coords shared by friends. Off by default.
 
 ---
 
-## Settings
+## Works with
 
-**F7** opens the menu. Every option can be switched off separately, and changes are saved immediately.
+- Fabric Loader 0.16+ and Fabric API
+- Minecraft **1.21.2 – 1.21.4** and **1.21.9 – 1.21.11**
+- Sodium, Iris and Nvidium — detected automatically
+- Any server, including ones that know nothing about the mod
 
-At the bottom there is a **Hook status** section that shows whether each part of the mod has actually run. In a mod that exists to prevent leaks, a silent failure after a game update would be the worst possible outcome, so you can verify it instead of trusting it.
+## Does not cover
 
----
-
-## Compatibility
-
-- **Fabric Loader 0.16+** and **Fabric API**
-- **Client-side only** — nothing to install on the server, and it works on servers that have no idea it exists
-- **Sodium, Iris, Nvidium and friends** are detected automatically; the mod switches to the masking mode that works with them
-- Supported: **1.21.2 – 1.21.4** and **1.21.9 – 1.21.11**
-
-No packets are modified and nothing is sent to the server. The game state the server sees is identical with or without the mod.
+Maps, compasses, server scoreboards and distinctive terrain can still give hints. This closes the four biggest leaks, not every one.
 
 ---
 
-## What it does not protect against
-
-To be clear about the limits:
-
-- **maps** in your hand or in item frames still show the terrain around them
-- **compasses** still point at spawn or their lodestone
-- **scoreboards, action bar and server tab lists** — some servers print coordinates there; only F3 and, optionally, chat are covered
-- **distinctive terrain and structures** still narrow down the area
-- **window title, Discord status or the world name** visible outside the game
-
-It closes the four most dangerous channels, but it is not a substitute for thinking before you post footage.
-
----
-
-## Source
-
-Code and issue tracker: [github.com/Userhost999891/AntiBaseLeak](https://github.com/Userhost999891/AntiBaseLeak) — MIT licensed.
+[Source code on GitHub](https://github.com/Userhost999891/AntiBaseLeak) · MIT
