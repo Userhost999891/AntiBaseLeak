@@ -7,6 +7,13 @@ plugins {
 stonecutter active "1.21.11"
 
 // One jar per supported game version, collected in build/libs/<mod version>/.
+// One Modrinth version per supported game version, in a single command.
+tasks.register("publishAllToModrinth") {
+    group = "publishing"
+    description = "Uploads a Modrinth version for every supported Minecraft version"
+    dependsOn(subprojects.map { it.tasks.named("modrinth") })
+}
+
 tasks.register("buildAll") {
     group = "build"
     description = "Builds the jars for every supported Minecraft version"

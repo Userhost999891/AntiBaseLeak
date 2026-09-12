@@ -1,11 +1,16 @@
 plugins {
     id("fabric-loom")
+    id("com.modrinth.minotaur")
 }
 
 version = "${sc.properties.get<String>("mod.version")}+${sc.current.version}"
 base.archivesName = sc.properties.get<String>("mod.id")
 
 val mcVersion: String = sc.current.version
+
+// Game versions this branch is published for - the same list the mod metadata uses.
+val publishedVersions: List<String> = sc.properties.rawOrNull("mod", "mc_releases")
+    ?.asList().orEmpty().map { it.toString() }
 
 // The rendering code differs enough between 1.21.4 and 1.21.9+ that it lives in
 // per-version directories instead of giant conditional blocks.
@@ -38,6 +43,39 @@ loom {
         property("antibaseleak.selftest", "true")
     }
     runConfigs.named("server") { ideConfigGenerated(false) }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  Publishing to Modrinth
+//
+//  MODRINTH_TOKEN=... ./gradlew publishAllToModrinth   (every branch)
+//  MODRINTH_TOKEN=... ./gradlew :1.21.11:modrinth      (one branch)
+//
+//  The token is read lazily, so an ordinary build never needs it. The project has
+//  to exist on Modrinth first - Minotaur uploads versions, it does not create
+//  projects.
+// ─────────────────────────────────────────────────────────────────────────────
+modrinth {
+    token = providers.environmentVariable("MODRINTH_TOKEN")
+    projectId = providers.gradleProperty("abl.modrinthId").orElse(sc.properties.get<String>("mod.id"))
+    versionNumber = project.version.toString()
+    versionName = "${sc.properties.get<String>("mod.name")} ${sc.properties.get<String>("mod.version")} for $mcVersion"
+    versionType = "release"
+    // ./gradlew :1.21.11:modrinth -Pabl.modrinthDry  -> prints what would be sent,
+    // uploads nothing. Handy for checking the metadata before the real run.
+    debugMode = providers.gradleProperty("abl.modrinthDry").map { true }.orElse(false)
+    // With Loom this has to be remapJar, not jar - jar still holds named mappings.
+    uploadFile.set(tasks.remapJar)
+    gameVersions.addAll(publishedVersions)
+    loaders.add("fabric")
+    changelog = providers.provider {
+        val file = rootProject.file("CHANGELOG.md")
+        if (file.exists()) file.readText() else "See the repository for the list of changes."
+    }
+    syncBodyFrom = providers.provider { rootProject.file("README.md").readText() }
+    dependencies {
+        required.project("fabric-api")
+    }
 }
 
 java {

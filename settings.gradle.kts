@@ -9,6 +9,7 @@ pluginManagement {
     // Loom is declared centrally, so the per-version script uses `id("fabric-loom")` without a version.
     plugins {
         id("fabric-loom") version "1.17.20"
+        id("com.modrinth.minotaur") version "2.9.0"
     }
 }
 
