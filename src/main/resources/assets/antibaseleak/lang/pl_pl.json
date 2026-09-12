@@ -1,0 +1,83 @@
+{
+  "key.antibaseleak.menu": "Menu AntiBaseLeak",
+
+  "antibaseleak.toast.hint": "Wciśnij %s, aby otworzyć ustawienia",
+  "antibaseleak.toast.unbound": "nieprzypisany klawisz",
+
+  "antibaseleak.screen.footer": "Klikaj, żeby zmieniać. Esc zamyka. Klawisz menu zmienisz w Opcje > Sterowanie.",
+
+  "antibaseleak.section.bedrock": "Maskowanie bedrocka",
+  "antibaseleak.section.models": "Losowość modeli (też wycieka kordy)",
+  "antibaseleak.section.debug": "Ekran debugowania (F3)",
+  "antibaseleak.section.chat": "Czat",
+  "antibaseleak.section.toast": "Powiadomienie",
+  "antibaseleak.section.status": "Stan haków (czy mod naprawdę działa)",
+
+  "antibaseleak.option.mask": "Maskuj bedrock",
+  "antibaseleak.option.mask.tooltip": "Zamienia bedrock na zwykły blok - jego wzór nie trafia na screeny.",
+  "antibaseleak.option.mode": "Tryb podmiany",
+  "antibaseleak.option.mode.tooltip": "AUTO wybiera sam. RENDER nie rusza świata, ale nie działa z Sodium. WORLD działa zawsze.",
+  "antibaseleak.option.cover": "Czym zastąpić",
+  "antibaseleak.option.cover.tooltip": "NEAREST = tekstura najbliższego bloku, SECTION = jeden blok na sekcję 16x16x16, FIXED = wybrany blok.",
+  "antibaseleak.option.radius": "Promień szukania",
+  "antibaseleak.option.radius.tooltip": "Jak daleko NEAREST szuka bloku na zastępnik (1-4).",
+  "antibaseleak.option.fixed": "Blok dla FIXED",
+  "antibaseleak.option.fixed.tooltip": "Blok używany w trybie FIXED. Dowolne id wpiszesz w config/antibaseleak.json.",
+
+  "antibaseleak.option.rotation": "Wyłącz obroty modeli",
+  "antibaseleak.option.rotation.tooltip": "Obrót kamienia i netherracka liczony jest z XYZ - na screenie zdradza pozycję.",
+  "antibaseleak.option.offset": "Wyłącz przesunięcia roślin",
+  "antibaseleak.option.offset.tooltip": "Trawa i kwiaty są przesuwane wg XYZ - ten sam wyciek co obroty.",
+
+  "antibaseleak.option.debug": "Cenzura F3 (główny włącznik)",
+  "antibaseleak.option.debug.tooltip": "Włącza i wyłącza całą sekcję poniżej.",
+  "antibaseleak.option.position": "Pozycja gracza (XYZ, Block, Chunk)",
+  "antibaseleak.option.position.tooltip": "Linie XYZ / Block / Chunk / Chunk-relative.",
+  "antibaseleak.option.targetBlock": "Kordy bloku, na który patrzysz",
+  "antibaseleak.option.targetBlock.tooltip": "Linia Targeted Block.",
+  "antibaseleak.option.targetFluid": "Kordy płynu, na który patrzysz",
+  "antibaseleak.option.targetFluid.tooltip": "Linia Targeted Fluid.",
+  "antibaseleak.option.targetEntity": "Kordy bytu, na który patrzysz",
+  "antibaseleak.option.targetEntity.tooltip": "Linia Targeted Entity.",
+  "antibaseleak.option.biome": "Biom",
+  "antibaseleak.option.biome.tooltip": "Biom zawęża obszar, w którym może stać baza.",
+  "antibaseleak.option.dimension": "Wymiar",
+  "antibaseleak.option.dimension.tooltip": "Nazwa wymiaru (overworld / nether / end).",
+  "antibaseleak.option.server": "Serwer / adres IP",
+  "antibaseleak.option.server.tooltip": "Linie z adresem serwera.",
+  "antibaseleak.option.difficulty": "Lokalny poziom trudności",
+  "antibaseleak.option.difficulty.tooltip": "Zdradza, jak długo chunk był zamieszkany.",
+  "antibaseleak.option.other": "Inne linie z kordami",
+  "antibaseleak.option.other.tooltip": "Łapie linie dorzucone przez inne mody, jeśli wyglądają jak kordy.",
+  "antibaseleak.option.style": "Styl cenzury",
+  "antibaseleak.option.style.tooltip": "MASK chowa wartości znakami, HIDE kasuje linię, BLUR rozmywa ją shaderem na ekranie.",
+  "antibaseleak.option.blurStrength": "Siła rozmycia",
+  "antibaseleak.option.blurStrength.tooltip": "Liczba przebiegów shadera rozmycia (1-4). Więcej = mocniej rozmyte i nieco drożej.",
+
+  "antibaseleak.option.chat": "Cenzuruj kordy na czacie",
+  "antibaseleak.option.chat.tooltip": "Maskuje liczby w wiadomościach wyglądających na kordy (gubi formatowanie wiadomości).",
+
+  "antibaseleak.option.toast": "Powiadomienie po wejściu",
+  "antibaseleak.option.toast.tooltip": "Wysuwany z prawej dymek z podpowiedzią klawisza menu.",
+
+  "antibaseleak.option.reset": "Przywróć domyślne",
+  "antibaseleak.option.reset.tooltip": "Kasuje wszystkie zmiany i zapisuje plik konfiguracyjny.",
+
+  "antibaseleak.value.on": "WŁĄCZONE",
+  "antibaseleak.value.off": "wyłączone",
+  "antibaseleak.value.click": "klik",
+  "antibaseleak.value.blurBroken": "BLUR (niedostępny!)",
+
+  "antibaseleak.status.debugHud": "Cenzura F3",
+  "antibaseleak.status.modelSeed": "Stałe ziarno modeli",
+  "antibaseleak.status.modelOffset": "Przesunięcia modeli",
+  "antibaseleak.status.renderMask": "Maska w rendererze",
+  "antibaseleak.status.chat": "Hak czatu",
+  "antibaseleak.status.blur": "Rozmycie (shader)",
+  "antibaseleak.status.sections": "Zamaskowanych sekcji (tryb WORLD)",
+  "antibaseleak.status.active": "aktywny",
+  "antibaseleak.status.missing": "brak sygnału",
+  "antibaseleak.status.tooltip": "Zapala się, gdy hak faktycznie wykonał się choć raz.",
+
+  "antibaseleak.warn.sodium": "[AntiBaseLeak] Wykryto Sodium, a tryb podmiany to RENDER - bedrock NIE jest maskowany. Ustaw tryb WORLD lub AUTO (F7)."
+}

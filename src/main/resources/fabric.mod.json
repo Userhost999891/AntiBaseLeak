@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "Masks bedrock, disables position-based model randomness and censors coordinates on the F3 screen, so a screenshot cannot give away where your base is.",
+  "authors": ["minio"],
+  "license": "MIT",
+  "environment": "client",
+  "icon": "assets/antibaseleak/icon.png",
+  "entrypoints": {
+    "client": ["dev.antibaseleak.AntiBaseLeakClient"]
+  },
+  "mixins": [
+    {
+      "config": "antibaseleak.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader}",
+    "minecraft": "${minecraft}",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

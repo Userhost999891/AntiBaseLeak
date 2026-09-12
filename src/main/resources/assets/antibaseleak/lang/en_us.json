@@ -1,0 +1,83 @@
+{
+  "key.antibaseleak.menu": "AntiBaseLeak menu",
+
+  "antibaseleak.toast.hint": "Click %s to open settings menu!",
+  "antibaseleak.toast.unbound": "an unbound key",
+
+  "antibaseleak.screen.footer": "Click a row to change it. Esc closes. Rebind the menu key in Options > Controls.",
+
+  "antibaseleak.section.bedrock": "Bedrock masking",
+  "antibaseleak.section.models": "Model randomness (leaks coordinates too)",
+  "antibaseleak.section.debug": "Debug screen (F3)",
+  "antibaseleak.section.chat": "Chat",
+  "antibaseleak.section.toast": "Notification",
+  "antibaseleak.section.status": "Hook status (is the mod really working?)",
+
+  "antibaseleak.option.mask": "Mask bedrock",
+  "antibaseleak.option.mask.tooltip": "Replaces bedrock with an ordinary block, so its pattern never reaches your screenshots.",
+  "antibaseleak.option.mode": "Replacement mode",
+  "antibaseleak.option.mode.tooltip": "AUTO decides for you. RENDER leaves the world untouched but misses Sodium. WORLD always works.",
+  "antibaseleak.option.cover": "Replace with",
+  "antibaseleak.option.cover.tooltip": "NEAREST = texture of the closest block, SECTION = one block per 16x16x16 section, FIXED = a chosen block.",
+  "antibaseleak.option.radius": "Search radius",
+  "antibaseleak.option.radius.tooltip": "How far NEAREST looks for a replacement block (1-4).",
+  "antibaseleak.option.fixed": "Block for FIXED",
+  "antibaseleak.option.fixed.tooltip": "Block used by FIXED mode. Any block id can be set in config/antibaseleak.json.",
+
+  "antibaseleak.option.rotation": "Disable model rotation",
+  "antibaseleak.option.rotation.tooltip": "Stone and netherrack rotations are derived from XYZ, so on a screenshot they give your position away.",
+  "antibaseleak.option.offset": "Disable plant offsets",
+  "antibaseleak.option.offset.tooltip": "Grass and flowers are shifted based on XYZ - the same leak as rotations.",
+
+  "antibaseleak.option.debug": "Censor F3 (master switch)",
+  "antibaseleak.option.debug.tooltip": "Turns the whole section below on or off.",
+  "antibaseleak.option.position": "Player position (XYZ, Block, Chunk)",
+  "antibaseleak.option.position.tooltip": "The XYZ / Block / Chunk / Chunk-relative lines.",
+  "antibaseleak.option.targetBlock": "Targeted block coordinates",
+  "antibaseleak.option.targetBlock.tooltip": "The Targeted Block line.",
+  "antibaseleak.option.targetFluid": "Targeted fluid coordinates",
+  "antibaseleak.option.targetFluid.tooltip": "The Targeted Fluid line.",
+  "antibaseleak.option.targetEntity": "Targeted entity coordinates",
+  "antibaseleak.option.targetEntity.tooltip": "The Targeted Entity line.",
+  "antibaseleak.option.biome": "Biome",
+  "antibaseleak.option.biome.tooltip": "The biome narrows down where your base can be.",
+  "antibaseleak.option.dimension": "Dimension",
+  "antibaseleak.option.dimension.tooltip": "Dimension name (overworld / nether / end).",
+  "antibaseleak.option.server": "Server / IP address",
+  "antibaseleak.option.server.tooltip": "Lines carrying a server address.",
+  "antibaseleak.option.difficulty": "Local difficulty",
+  "antibaseleak.option.difficulty.tooltip": "Gives away how long the chunk has been inhabited.",
+  "antibaseleak.option.other": "Other lines with coordinates",
+  "antibaseleak.option.other.tooltip": "Catches lines added by other mods when they look like coordinates.",
+  "antibaseleak.option.style": "Censor style",
+  "antibaseleak.option.style.tooltip": "MASK hides values behind characters, HIDE drops the line, BLUR blurs it on screen with a shader.",
+  "antibaseleak.option.blurStrength": "Blur strength",
+  "antibaseleak.option.blurStrength.tooltip": "Number of blur shader passes (1-4). More means blurrier and slightly more expensive.",
+
+  "antibaseleak.option.chat": "Censor coordinates in chat",
+  "antibaseleak.option.chat.tooltip": "Masks numbers in messages that look like coordinates (drops message formatting).",
+
+  "antibaseleak.option.toast": "Notification on join",
+  "antibaseleak.option.toast.tooltip": "A panel sliding in from the right with the menu key hint.",
+
+  "antibaseleak.option.reset": "Restore defaults",
+  "antibaseleak.option.reset.tooltip": "Discards every change and writes the config file.",
+
+  "antibaseleak.value.on": "ON",
+  "antibaseleak.value.off": "off",
+  "antibaseleak.value.click": "click",
+  "antibaseleak.value.blurBroken": "BLUR (unavailable!)",
+
+  "antibaseleak.status.debugHud": "F3 censoring",
+  "antibaseleak.status.modelSeed": "Constant model seed",
+  "antibaseleak.status.modelOffset": "Model offsets",
+  "antibaseleak.status.renderMask": "Mask in the renderer",
+  "antibaseleak.status.chat": "Chat hook",
+  "antibaseleak.status.blur": "Blur (shader)",
+  "antibaseleak.status.sections": "Masked sections (WORLD mode)",
+  "antibaseleak.status.active": "active",
+  "antibaseleak.status.missing": "no signal",
+  "antibaseleak.status.tooltip": "Turns green once the hook has actually run at least once.",
+
+  "antibaseleak.warn.sodium": "[AntiBaseLeak] Sodium detected while replacement mode is RENDER - bedrock is NOT masked. Switch to WORLD or AUTO (F7)."
+}
