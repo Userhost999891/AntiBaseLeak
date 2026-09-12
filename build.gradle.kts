@@ -83,7 +83,12 @@ modrinth {
         val file = rootProject.file("CHANGELOG.md")
         if (file.exists()) file.readText() else "See the repository for the list of changes."
     }
-    syncBodyFrom = providers.provider { rootProject.file("README.md").readText() }
+    // The project page gets its own text: README is aimed at whoever builds the
+    // mod, MODRINTH.md at whoever installs it.
+    syncBodyFrom = providers.provider {
+        val page = rootProject.file("MODRINTH.md")
+        (if (page.exists()) page else rootProject.file("README.md")).readText()
+    }
     dependencies {
         required.project("fabric-api")
     }
