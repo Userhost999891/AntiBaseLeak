@@ -6,6 +6,10 @@
   "description": "Masks bedrock, disables position-based model randomness and censors coordinates on the F3 screen, so a screenshot cannot give away where your base is.",
   "authors": ["minio"],
   "license": "MIT",
+  "contact": {
+    "sources": "https://github.com/Userhost999891/AntiBaseLeak",
+    "issues": "https://github.com/Userhost999891/AntiBaseLeak/issues"
+  },
   "environment": "client",
   "icon": "assets/antibaseleak/icon.png",
   "entrypoints": {
